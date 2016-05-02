@@ -1,6 +1,6 @@
 {
   "name": "storm-scrollpoints",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Attach actions and classes to elements scrolling into view.",
   "author": "stormid",
   "license": "MIT",
