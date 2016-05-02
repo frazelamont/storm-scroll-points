@@ -3,12 +3,13 @@
 var gulp = require('gulp'),
     pkg = require('./package.json'),
     header = require('gulp-header'),
-    browserSync = require('browser-sync'),
-    reload = browserSync.reload,
     notify = require('gulp-notify'),
-    plumber = require('gulp-plumber'),
-    debug = require('gulp-debug'),
+    uglify = require('gulp-uglify'),
+    rename = require('gulp-rename'),
     browserify = require('gulp-browserify'),
+    browserSync = require('browser-sync'),
+    ghPages = require('gulp-gh-pages'),
+    reload = browserSync.reload,
     runSequence = require('run-sequence');
 
 
@@ -34,33 +35,66 @@ var onError = function(err) {
     this.emit('end');
 };
 
+var componentName = function(){
+	return pkg.name.split('-').map(function(w){ return w.substr(0, 1).toUpperCase() + w.substr(1); }).join();
+};
+
 /************************
  *  Task definitions 
  ************************/
-/* Concat the js */
-gulp.task('js', function() {
-    return gulp.src('src/scrollpoints.js')
-		.pipe(header(banner, {pkg : pkg}))
+
+gulp.task('js:copy', function() {
+    return gulp.src('src/*.js')
+        .pipe(header(banner, {pkg : pkg}))
 		.pipe(gulp.dest('dist/'));
 });
 
+gulp.task('js:compress', function() {
+    return gulp.src('src/*.js')
+		.pipe(header(banner, {pkg : pkg}))
+		.pipe(uglify())
+  		.pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest('dist/'));
+});
 
-/* Server with auto reload and browersync */
-gulp.task('server', ['js'], function () {
+gulp.task('js', ['js:copy', 'js:compress']);
+
+gulp.task('copy', function() {
+    return gulp.src('dist/*.js')
+		.pipe(gulp.dest('example/src/libs/'));
+});
+
+gulp.task('example', function() {
+    return gulp.src('example/src/app.js')
+		.pipe(browserify({
+          insertGlobals : true,
+          debug : true
+        }))
+		.pipe(gulp.dest('example/js'));
+});
+
+gulp.task('server', ['js', 'example'], function () {
       browserSync({
         notify: false,
         // https: true,
-        server: ['dist'],
-        tunnel: true
+        server: ['example'],
+        tunnel: false
       });
 
-      gulp.watch(['src/*'], ['js', reload]);
+      gulp.watch(['src/*'], function(){
+          runSequence('js', 'copy', 'example', reload);
+      });
+      gulp.watch(['example/**/*'], ['example', reload]);
 });
+ 
+gulp.task('deploy', ['example'], function() {
+  return gulp.src('./example/**/*')
+    .pipe(ghPages());
+});
+
 
 /************************
  *  Task collection API
  ************************/
-gulp.task('default', ['js']);
+gulp.task('default', ['server']);
 gulp.task('serve', ['server']);
-
-
