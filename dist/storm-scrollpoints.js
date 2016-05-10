@@ -1,6 +1,6 @@
 /**
  * @name storm-scrollpoints: Attach actions and classes to elements scrolling into view.
- * @version 0.1.1: Mon, 02 May 2016 13:03:11 GMT
+ * @version 0.1.2: Tue, 10 May 2016 13:42:44 GMT
  * @author stormid
  * @license MIT
  */(function(root, factory) {
