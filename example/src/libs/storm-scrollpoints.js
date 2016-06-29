@@ -1,12 +1,10 @@
 /**
  * @name storm-scrollpoints: Attach actions and classes to elements scrolling into view.
- * @version 0.1.1: Mon, 02 May 2016 13:03:11 GMT
+ * @version 0.2.0: Wed, 29 Jun 2016 12:23:39 GMT
  * @author stormid
  * @license MIT
  */(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else if (typeof exports === 'object') {
+  if (typeof exports === 'object') {
     module.exports = factory();
   } else {
     root.StormScrollpoints = factory();
@@ -34,7 +32,7 @@
             },
 			check: function(){
 				if (!!this.enteredView()) {
-					STORM.UTILS.classlist(this.DOMElement).add(this.settings.className);
+					this.DOMElement.classList.add(this.settings.className);
 					!!this.settings.callback && this.settings.callback.call(this);
 
 					if(!!this.settings.unload) {
@@ -61,9 +59,9 @@
         }
         
         els.forEach(function(el, i){
-            instances[i] = STORM.UTILS.assign(Object.create(StormScrollpoints), {
+            instances[i] = Object.assign(Object.create(StormScrollpoints), {
                 DOMElement: el,
-                settings: STORM.UTILS.merge({}, defaults, opts)
+                settings: Object.assign({}, defaults, opts)
             });
             instances[i].init();
         });
