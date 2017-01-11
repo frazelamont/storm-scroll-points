@@ -20,14 +20,14 @@ const defaults = {
 			return this;
 		},
 		check(){
-			if (this.enteredView()) {
-				this.DOMElement.classList.add(this.settings.className);
-				!!this.settings.callback && this.settings.callback.call(this);
+			if (!this.enteredView()) return;
+			
+			this.DOMElement.classList.add(this.settings.className);
+			!!this.settings.callback && this.settings.callback.call(this);
 
-				if(this.settings.unload) {
-					document.removeEventListener('scroll', this.throttled, true);
-					document.removeEventListener('resize', this.throttled, true);
-				}
+			if(this.settings.unload) {
+				document.removeEventListener('scroll', this.throttled, true);
+				document.removeEventListener('resize', this.throttled, true);
 			}
 		},
 		enteredView(){

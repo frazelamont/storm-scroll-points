@@ -1,6 +1,6 @@
 /**
- * @name storm-scroll-points: Attach actions and classes to elements scrolling into view.
- * @version 0.3.0: Wed, 11 Jan 2017 11:17:15 GMT
+ * @name storm-scroll-points: Trigger className changes and callbacks when an element scrolls into view
+ * @version 0.3.0: Wed, 11 Jan 2017 11:52:11 GMT
  * @author stormid
  * @license MIT
  */
@@ -52,14 +52,14 @@ var defaults = {
 		return this;
 	},
 	check: function check() {
-		if (this.enteredView()) {
-			this.DOMElement.classList.add(this.settings.className);
-			!!this.settings.callback && this.settings.callback.call(this);
+		if (!this.enteredView()) return;
 
-			if (this.settings.unload) {
-				document.removeEventListener('scroll', this.throttled, true);
-				document.removeEventListener('resize', this.throttled, true);
-			}
+		this.DOMElement.classList.add(this.settings.className);
+		!!this.settings.callback && this.settings.callback.call(this);
+
+		if (this.settings.unload) {
+			document.removeEventListener('scroll', this.throttled, true);
+			document.removeEventListener('resize', this.throttled, true);
 		}
 	},
 	enteredView: function enteredView() {
