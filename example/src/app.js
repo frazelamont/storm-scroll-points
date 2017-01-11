@@ -1,24 +1,8 @@
-var UTILS = {
-		attributelist: require('storm-attributelist'),
-		throttle: require('lodash.throttle')
-	},
-    UI = (function(w, d) {
-		'use strict';
+import ScrollPoints from './libs/storm-scroll-points';
 
-		var ScrollPoints = require('./libs/storm-scrollpoints'),
-			init = function() {
-				ScrollPoints.init('.js-scrollpoint');
-			};
-
-		return {
-			init: init
-		};
-
-	})(window, document, undefined);
-
-global.STORM = {
-    UTILS: UTILS,
-    UI: UI
-};
-
-if('addEventListener' in window) window.addEventListener('DOMContentLoaded', STORM.UI.init, false);
+const onDOMContentLoadedTasks = [() => {
+	let sp = ScrollPoints.init('.js-scroll-point');
+	console.log(sp);
+}];
+    
+if('addEventListener' in window) window.addEventListener('DOMContentLoaded', () => { onDOMContentLoadedTasks.forEach((fn) => fn()); });
