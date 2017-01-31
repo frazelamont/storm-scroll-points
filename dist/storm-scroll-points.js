@@ -1,10 +1,10 @@
 /**
  * @name storm-scroll-points: Trigger className changes and callbacks when an element scrolls into view
- * @version 0.3.0: Fri, 20 Jan 2017 16:46:50 GMT
+ * @version 0.3.0: Tue, 31 Jan 2017 17:56:12 GMT
  * @author stormid
  * @license MIT
  */
-import throttle from 'lodash/throttle';
+import throttle from 'lodash.throttle';
 
 const defaults = {
 		offset: 0,

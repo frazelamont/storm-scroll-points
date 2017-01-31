@@ -1,8 +1,11 @@
-import ScrollPoints from './libs/storm-scroll-points';
+import Load from 'storm-load';
 
 const onDOMContentLoadedTasks = [() => {
-	let sp = ScrollPoints.init('.js-scroll-point');
-	console.log(sp);
+
+	Load('./js/storm-scroll-points.standalone.js')
+		.then(() => {
+			StormScrollPoints.init('.js-scroll-point');
+		});
 }];
     
 if('addEventListener' in window) window.addEventListener('DOMContentLoaded', () => { onDOMContentLoadedTasks.forEach((fn) => fn()); });
