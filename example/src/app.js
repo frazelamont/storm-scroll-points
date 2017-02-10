@@ -4,7 +4,9 @@ const onDOMContentLoadedTasks = [() => {
 
 	Load('./js/storm-scroll-points.standalone.js')
 		.then(() => {
-			StormScrollPoints.init('.js-scroll-point');
+			StormScrollPoints.init('.js-scroll-point', {
+				offset: '50%'
+			});
 		});
 }];
     

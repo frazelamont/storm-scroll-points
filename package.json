@@ -54,7 +54,6 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "run-sequence": "^1.1.0",
     "should": "^11.1.1",
-    "storm-load": "^0.4.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
