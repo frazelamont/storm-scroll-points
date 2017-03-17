@@ -1,4 +1,4 @@
-#Storm Scroll Points
+# Storm Scroll Points
 
 [![Build Status](https://travis-ci.org/mjbp/storm-scroll-points.svg?branch=master)](https://travis-ci.org/mjbp/storm-scroll-points)
 [![codecov.io](http://codecov.io/github/mjbp/storm-scroll-points/coverage.svg?branch=master)](http://codecov.io/github/mjbp/storm-scroll-points?branch=master)
@@ -6,10 +6,10 @@
 
 Trigger className changes and callbacks when an element scrolls into view. Use with care to avoid jank.
 
-##Example
+## Example
 [https://mjbp.github.io/storm-scroll-points](https://mjbp.github.io/storm-scroll-points)
 
-##Usage
+## Usage
 HTML
 ```
 	<div class="js-scroll-point"></div>
@@ -35,7 +35,7 @@ Load('/content/js/async/storm-scroll-point.standalone.js')
     });
 ```
 
-###Options
+### Options
 ```
     {
 		offset: 0,
@@ -55,20 +55,20 @@ ScrollPoints.init('.js-scroll-points', {
 });
 ```
 
-##Tests
+## Tests
 ```
 npm run test
 ```
 
-##Browser support
+## Browser support
 This is module has both es6 and es5 distributions. The es6 version should be used in a workflow that transpiles.
 
 This module depends upon Object.assign, element.classList, and Promises, available in all evergreen browsers. ie9+ is supported with polyfills, ie8+ will work with even more polyfills for Array functions and eventListeners.
 
-##Dependencies
+## Dependencies
 None external.
 
 Imports lodash.throttle.
 
-##License
+## License
 MIT
