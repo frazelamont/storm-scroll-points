@@ -1,6 +1,6 @@
 /**
  * @name storm-scroll-points: Trigger className changes and callbacks when an element scrolls into view
- * @version 0.3.0: Fri, 10 Mar 2017 17:55:27 GMT
+ * @version 1.0.2: Wed, 10 Jan 2018 14:35:24 GMT
  * @author stormid
  * @license MIT
  */
@@ -462,7 +462,7 @@ function toNumber(value) {
   return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
 }
 
-var index = throttle;
+var index$1 = throttle;
 
 var defaults = {
   offset: 0,
@@ -475,7 +475,7 @@ var StormScrollPoints = {
   init: function init() {
     var _this = this;
 
-    this.throttled = index(function () {
+    this.throttled = index$1(function () {
       _this.check.call(_this);
     }, this.settings.throttle);
 

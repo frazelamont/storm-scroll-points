@@ -1,6 +1,6 @@
 /**
  * @name storm-scroll-points: Trigger className changes and callbacks when an element scrolls into view
- * @version 0.3.0: Fri, 10 Mar 2017 17:55:25 GMT
+ * @version 1.0.2: Wed, 10 Jan 2018 14:35:23 GMT
  * @author stormid
  * @license MIT
  */
