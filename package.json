@@ -1,6 +1,6 @@
 {
   "name": "storm-scroll-points",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Trigger className changes and callbacks when an element scrolls into view",
   "author": "stormid",
   "license": "MIT",
