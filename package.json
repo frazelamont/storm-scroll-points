@@ -1,6 +1,6 @@
 {
   "name": "storm-scroll-points",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Trigger className changes and callbacks when an element scrolls into view",
   "author": "stormid",
   "license": "MIT",
@@ -66,10 +66,11 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "run-sequence": "^1.1.0",
     "should": "^11.1.1",
+    "storm-load": "^1.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "lodash.throttle": "^4.1.1"
+    "raf-throttle": "^2.0.3"
   }
 }

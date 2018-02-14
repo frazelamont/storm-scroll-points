@@ -1,15 +1,14 @@
 /**
  * @name storm-scroll-points: Trigger className changes and callbacks when an element scrolls into view
- * @version 0.3.0: Fri, 10 Mar 2017 17:55:25 GMT
+ * @version 1.0.2: Sat, 03 Feb 2018 19:46:42 GMT
  * @author stormid
  * @license MIT
  */
-import throttle from 'lodash.throttle';
+import throttle from 'raf-throttle';
 
 const defaults = {
 		offset: 0,
 		callback: false,
-		throttle: 60,
 		className: 'is--scrolled-in',
 		unload: true
 	},
@@ -17,7 +16,7 @@ const defaults = {
 		init() {
 			this.throttled = throttle(() => {
 				this.check.call(this);
-			}, this.settings.throttle);
+			});
 			
 			document.addEventListener('scroll', this.throttled, true);
 			document.addEventListener('resize', this.throttled, true);

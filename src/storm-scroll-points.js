@@ -1,9 +1,8 @@
-import throttle from 'lodash.throttle';
+import throttle from 'raf-throttle';
 
 const defaults = {
 		offset: 0,
 		callback: false,
-		throttle: 60,
 		className: 'is--scrolled-in',
 		unload: true
 	},
@@ -11,7 +10,7 @@ const defaults = {
 		init() {
 			this.throttled = throttle(() => {
 				this.check.call(this);
-			}, this.settings.throttle);
+			});
 			
 			document.addEventListener('scroll', this.throttled, true);
 			document.addEventListener('resize', this.throttled, true);
